@@ -8,14 +8,15 @@ import Search from './components/Search'
 
 function App() {
 const [query ,setQuery]=useState('')
+const [select,setSelect]=useState('')
   return (
     <>
     <Header />
     <div className="flex justify-between px-14 my-4 flex-wrap gap-5">
       <Search setQuery={setQuery} />
-      <Filter />
+      <Filter setSelect={setSelect} />
     </div>
-    <CardContainer query={query} />
+    <CardContainer query={query} select={select}/>
     </>
   )
 }
