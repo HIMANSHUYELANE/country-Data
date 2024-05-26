@@ -4,7 +4,6 @@ import "../App.css";
 import CardContainer from "./CardContainer";
 import Filter from "./Filter";
 import Search from "./Search";
-import { Outlet } from "react-router-dom";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -15,6 +14,7 @@ export default function Home() {
         <Search setQuery={setQuery} />
         <Filter setSelect={setSelect} />
       </div>
+      {/* <CardShimmer /> */}
       <CardContainer query={query} select={select} />
 </div>
   );

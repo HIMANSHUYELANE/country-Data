@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
-// import countriesData from "../../countriesData";
+import CardShimmer from "./CardShimmer";
 
-export default function CardContainer({query,select}) {
+export default function CardContainer({query,select}, state="coun,himanshu") {
   const [countriesData, setCountriesData] = useState([]);
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
-      .then((res) => res.json())
-      .then((data) => {
-        setCountriesData(data)
+    .then((res) => res.json())
+    .then((data) => {
+      setCountriesData(data)
     })
   },[])
+  if(!countriesData.length){
+    return <CardShimmer />
+  }
   return (
     <div className="flex justify-evenly flex-wrap">
       {countriesData
@@ -28,6 +31,7 @@ export default function CardContainer({query,select}) {
               population={country.population}
               region={country.region}
               capital={country.capital}
+              data={country}
             />
           );
         })}
